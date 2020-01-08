@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <center>
+        <form method="post">{% csrf_token %}
+            {{ form.as_p }}
+            <div style="margin-top: 10px;" class="row justify-content-center">
+                <div class="col-4">
+                    <h6>Environmental exposures:</h6>
+                    <button onclick="newInput('envexposure')" style="margin-bottom: 5px;" type="button"
+                            class="btn btn-success btn-sm"><span
+                            class="fas fa-plus pull-left"></span> add
+                        env. exposure
+                    </button>
+                    <div class="environmental-list-new">
+                        {% for envexposure in form.get_envexposure_fields %}
+                            {{ envexposure }}
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-4">
+                    <h6>Genetic Modifications:</h6>
+                    <button onclick="newInput('geneticmodification')" style="margin-bottom: 5px;" type="button"
+                            class="btn btn-success btn-sm"><span
+                            class="fas fa-plus pull-left"></span> Add genetic mod.
+                    </button>
+                    <div class="environmental-list-new">
+                        {% for genemodification in form.get_genemodification_fields %}
+                            {{ genemodification }}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <input type="submit" value="Update">
+        </form>
+        <a href="{% url 'collector:participants' %}" class="btn btn-secondary" style="margin-top: 10px;" role="button"
+           aria-pressed="true">Go to list of participants</a>
+        </button>
+    </center>
+{% endblock %}
+
+

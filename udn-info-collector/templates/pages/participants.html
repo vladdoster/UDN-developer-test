@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Participants</h2>
+    <input type="text" id="userInput" onkeyup="simpleSearch()" placeholder="Search for participants..">
+    <a href="{% url 'collector:new_participant' %}" class="btn btn-secondary" style="margin-top: 10px;" role="button"
+       aria-pressed="true">Add participant</a>
+    <div class="model_container">
+        <table id="participantTable" class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Age</th>
+                <th scope="col">Has siblings</th>
+                <th scope="col">Environmental exposures</th>
+                <th scope="col">Gene mutations</th>
+                <th scope="col">Review status</th>
+                <th scope="col">Edit participant data</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for model in participants_model_list %}
+                <tr>
+                <th scope="row">{{ model.pk }}</th>
+                <td>{{ model.name }}</td>
+                <td>{{ model.age }}</td>
+                <td>{{ model.has_siblings }}</td>
+                <td>
+                    {% for item in model.participantenvironmentalexposure_set.all %}
+                        {{ item.envexposure }}
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for item in model.participantgenemutation_set.all %}
+                        {{ item.genemutation }}
+                    {% endfor %}
+                </td>
+                <td>
+                    {{ model.app_status_verbose }}
+                </td>
+                <td>
+                    <a href="{% url 'collector:update_participant' model.pk %}">
+                        <button style="margin:auto; display:block; horiz-align: center" type="button"
+                                class="btn btn-success btn-sm"><span
+                                class="fas fa-edit center"></span> edit data
+                        </button>
+                    </a>
+                </td>
+            {% empty %}
+                <td colspan="8">Sorry, no participants in this DB :(.</td>
+            {% endfor %}
+            </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
