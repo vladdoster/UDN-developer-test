@@ -6,17 +6,17 @@
 
 ### DB view
 
-![https://github.com/vladdoster/UDN-developer-test/blob/vlad-test-attempt/docs/assets/different_users.png](different users)
+![](https://github.com/vladdoster/UDN-developer-test/blob/vlad-test-attempt/docs/assets/different_users.png)
 
-![https://github.com/vladdoster/UDN-developer-test/blob/vlad-test-attempt/docs/assets/search.png](search)
+![](https://github.com/vladdoster/UDN-developer-test/blob/vlad-test-attempt/docs/assets/search.png)
 
 ### Adding new user
 
-![https://github.com/vladdoster/UDN-developer-test/blob/vlad-test-attempt/docs/assets/new_user.png](new user view)
+![](https://github.com/vladdoster/UDN-developer-test/blob/vlad-test-attempt/docs/assets/new_user.png)
 
 ### Updating existing user
 
-![https://github.com/vladdoster/UDN-developer-test/blob/vlad-test-attempt/docs/assets/update_user.png](update user view)
+![](https://github.com/vladdoster/UDN-developer-test/blob/vlad-test-attempt/docs/assets/update_user.png)
 
 </div>
 
