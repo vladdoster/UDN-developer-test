@@ -13,4 +13,4 @@ docker-compose -f local.yml run --rm django python manage.py makemigrations coll
 echo "Starting stack"
 docker-compose -f local.yml up
 
-echo "Assay viz is up at 0.0.0.0:8000"
+echo "UDN participant ingestion app is up at 0.0.0.0:8000"

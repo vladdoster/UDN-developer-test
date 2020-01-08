@@ -2,8 +2,6 @@
 
 # Simple user data ingestions app with DB viewer/updater for UDN
 
-<img src="https://github.com/vladdoster/assay-viz/blob/master/assay-viz.png" data-canonical-src="https://github.com/vladdoster/assay-viz/blob/master/assay-viz.png" width="400" height="400" />
-
 ### Screenshots
 
 ### DB view
