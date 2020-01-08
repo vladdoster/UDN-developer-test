@@ -19,7 +19,7 @@ class ParticipantForm(forms.ModelForm):
             participant=self.instance
         )
 
-        # This can be reduced, i am doing a POC. Very easy to yank in vim and replace all
+        # This can be reduced using reflection or a clever loop, i am doing a POC. Very easy to yank in vim and replace all
         #################################################
         for i in range(len(envexposures) + 1):
             field_name = 'envexposure_%s' % (i,)
