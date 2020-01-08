@@ -2,6 +2,8 @@
 
 # Simple user data ingestions app with DB viewer/updater for UDN
 
+Completed in ~6 hours
+
 ### Screenshots
 
 ### DB view
