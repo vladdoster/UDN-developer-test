@@ -21,34 +21,6 @@ function simpleSearch() {
 }
 
 function newInput(inputType) {
-    var lastInput = $("input[id*=" + inputType + "]").slice(-1)[0];
-    console.log($("input[id*=" + inputType + "]").slice(-1)[0]);
-    console.log($(lastInput).id);
-    if ($(lastInput).val() === '') {
-        console.log("Empty" + $(lastInput).val())
-    } else {
-        console.log("not empty!" + $(lastInput).val())
-    }
+    console.log("Adding a " + inputType);
+    $("." + inputType + "").last().clone().appendTo("." + inputType + "")
 }
-
-
-// $('.environmental-list-new').on('input', function () {
-//     var $this = $(this);
-//     var $clone = $this.clone();
-//     console.log($($clone))
-//     var name = $clone.attr("name");
-//     console.log($("input[name*='envexposure']"))
-//     var lastEnvExposure = $("input[name^='envexposure']").slice(-1)[0];
-//     console.log($(lastEnvExposure).attr('name').split("_")[1]);
-//
-//     let n = parseInt($(lastEnvExposure).attr('name').split("_")[1]) + 1;
-//     name = 'envexposure_' + n;
-//     console.log("new input name is " + name);
-//     $clone.val('').end();
-//     $clone.attr('name', name);
-//     $clone.appendTo($this.parent());
-//     $clone.val('')
-//     $this.removeClass('environmental-list-new');
-//     $this.off('input', arguments.callee);
-//     $clone.on('input', arguments.callee)
-// });

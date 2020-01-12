@@ -11,7 +11,14 @@ MANAGERS = ADMINS
 
 # django-debug-toolbar
 # ------------------------------------------------------------------------------
-INSTALLED_APPS += ["debug_toolbar"]
+INSTALLED_APPS += ["debug_toolbar",
+                   "crispy_forms", ]
+
+# Crispy forms
+# ------------------------------------------------------------------------------
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+CRISPY_FAIL_SILENTLY = not DEBUG
+
 MIDDLEWARE += ["debug_toolbar.middleware.DebugToolbarMiddleware"]  # noqa F405
 DEBUG_TOOLBAR_CONFIG = {
     "DISABLE_PANELS": ["debug_toolbar.panels.redirects.RedirectsPanel"],

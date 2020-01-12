@@ -1,8 +1,11 @@
+# import the logging library
+import logging
+
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit, Field, HTML, Div
 from django import forms
 
 from . import models
-# import the logging library
-import logging
 
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
@@ -12,6 +15,7 @@ class ParticipantForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+
         envexposures = models.ParticipantEnvironmentalExposure.objects.filter(
             participant=self.instance
         )
@@ -37,6 +41,28 @@ class ParticipantForm(forms.ModelForm):
             except IndexError:
                 self.initial[field_name] = ''
         #################################################
+
+        self.helper = FormHelper()
+        self.helper.layout = Layout(
+            Fieldset(
+                '',
+                Field('name', ),
+                Field('age', ),
+                'has_siblings',
+                'application_status',
+                HTML("""<button onclick="newInput('environmentexposures')" style="margin-bottom: 5px;" type="button"
+                                  class="btn btn-success btn-sm"><span class="fas fa-plus pull-left"></span> Add environment exposure
+                          </button>"""),
+                Div(Field('envexposure_0', rows=2, cols=2), css_class="environmentexposures", ),
+                HTML("""<button onclick="newInput('geneticmodifications')" style="margin-bottom: 5px;" type="button"
+                                                  class="btn btn-success btn-sm"><span class="fas fa-plus pull-left"></span> Add genetic modification
+                                          </button>"""),
+                Div(Field('genemutation_0', rows=2, cols=2), css_class="geneticmodifications", ),
+            ),
+            ButtonHolder(
+                Submit('submit', 'Submit participant data')
+            )
+        )
 
     def clean(self):
         # This can be reduced, i am doing a POC. Very easy to yank in vim and replace all
