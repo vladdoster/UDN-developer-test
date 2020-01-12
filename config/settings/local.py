@@ -9,8 +9,6 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-# django-debug-toolbar
-# ------------------------------------------------------------------------------
 INSTALLED_APPS += ["debug_toolbar",
                    "django_extensions"
                    "crispy_forms", ]
@@ -20,7 +18,9 @@ INSTALLED_APPS += ["debug_toolbar",
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 CRISPY_FAIL_SILENTLY = not DEBUG
 
-MIDDLEWARE += ["debug_toolbar.middleware.DebugToolbarMiddleware"]  # noqa F405
+# django-debug-toolbar
+# ------------------------------------------------------------------------------
+MIDDLEWARE += ["debug_toolbar.middleware.DebugToolbarMiddleware"]
 DEBUG_TOOLBAR_CONFIG = {
     "DISABLE_PANELS": ["debug_toolbar.panels.redirects.RedirectsPanel"],
     "SHOW_TEMPLATE_CONTEXT": True,
