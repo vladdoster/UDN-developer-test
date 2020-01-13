@@ -16,13 +16,13 @@ Completed in ~6 hours
 
 ![](https://github.com/vladdoster/UDN-developer-test/blob/master/docs/assets/new_user.png)
 
-### Updating existing user
+### Updating existing user using admin pane
 
-![](https://github.com/vladdoster/UDN-developer-test/blob/master/docs/assets/update_user.png)
+![](https://github.com/vladdoster/UDN-developer-test/blob/master/docs/assets/admin.png)
 
 ### Admin panel
 
-![](https://github.com/vladdoster/UDN-developer-test/blob/master/docs/assets/admin.png)
+![](https://github.com/vladdoster/UDN-developer-test/blob/master/docs/assets/admin_overall.png)
 
 </div>
 
