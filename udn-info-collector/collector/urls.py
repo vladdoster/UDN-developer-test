@@ -1,4 +1,5 @@
 from django.urls import path
+
 from .views import NewParticipantView, ParticipantListView, ParticipantUpdateView
 
 app_name = "collector"

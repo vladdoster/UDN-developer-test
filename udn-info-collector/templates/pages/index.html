@@ -4,7 +4,7 @@
 {% block content %}
     <center>
         <h2><u>New participant form</u></h2>
-        <form method="post" class="uniForm">
+        <form method="post" id="form" class="uniForm">
             {% crispy form %}
         </form>
         <a href="{% url 'collector:participants' %}" class="btn btn-secondary" style="margin-top: 10px;" role="button"
@@ -12,5 +12,3 @@
         </button>
     </center>
 {% endblock %}
-
-

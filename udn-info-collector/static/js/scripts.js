@@ -22,5 +22,18 @@ function simpleSearch() {
 
 function newInput(inputType) {
     console.log("Adding a " + inputType);
-    $("." + inputType + "").last().clone().appendTo("." + inputType + "")
+    var $new_element = $("." + inputType + "").children().last().clone();
+    var arrVars = $new_element.prop("id").split("_");
+    var lastVar = arrVars.pop();
+    lastVar++;
+    // Set new id and append to html
+    $new_element.prop("id", "div_id_" + inputType + "_" + lastVar);
+    $new_element.appendTo($("." + inputType + ""))
+    // Label for input
+    $label = $($new_element.contents()[1]);
+    $label.text(lastVar);
+    $label.attr('for', "id_" + inputType + "_" + lastVar);
+    // Text area for input
+    $text_area = $("." + inputType + "_textarea").last();
+    $text_area.attr("name", inputType + "_" + lastVar).attr("id", "id_" + inputType + "_" + lastVar).val("");
 }

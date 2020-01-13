@@ -50,14 +50,20 @@ class ParticipantForm(forms.ModelForm):
                 Field('age', ),
                 'has_siblings',
                 'application_status',
-                HTML("""<button onclick="newInput('environmentexposures')" style="margin-bottom: 5px;" type="button"
+                HTML("""<h3>Environmental Exposures</h3>"""),
+                HTML("""<button onclick="newInput('envexposure')" style="margin-bottom: 5px;" type="button"
                                   class="btn btn-success btn-sm"><span class="fas fa-plus pull-left"></span> Add environment exposure
                           </button>"""),
-                Div(Field('envexposure_0', rows=2, cols=2), css_class="environmentexposures", ),
-                HTML("""<button onclick="newInput('geneticmodifications')" style="margin-bottom: 5px;" type="button"
+                Div(Field('envexposure_0', rows=2, cols=2, placeholder="Participant environmental exposure...",
+                          css_class="envexposure_textarea"),
+                    css_class="envexposure", ),
+                HTML("""<h3>Genetic Modifications</h3>"""),
+                HTML("""<button onclick="newInput('genemutation')" style="margin-bottom: 5px;" type="button"
                                                   class="btn btn-success btn-sm"><span class="fas fa-plus pull-left"></span> Add genetic modification
                                           </button>"""),
-                Div(Field('genemutation_0', rows=2, cols=2), css_class="geneticmodifications", ),
+                Div(Field('genemutation_0', rows=2, cols=2, placeholder="Participant gene mutation...",
+                          css_class="genemutation_textarea"),
+                    css_class="genemutation", ),
             ),
             ButtonHolder(
                 Submit('submit', 'Submit participant data')
@@ -70,11 +76,14 @@ class ParticipantForm(forms.ModelForm):
         envexposures = set()
         i = 0
         field_name = 'envexposure_%s' % (i,)
-        while self.cleaned_data.get(field_name):
-            envexposure = self.cleaned_data[field_name]
+        logger.debug(self.data)
+        while self.data.get(field_name):
+            envexposure = self.data[field_name]
             if envexposure in envexposures:
+                logger.debug("Duplicate!!")
                 self.add_error(field_name, 'Duplicate')
             else:
+                logger.debug("Not!!")
                 envexposures.add(envexposure)
             i += 1
             field_name = 'envexposure_%s' % (i,)
@@ -83,8 +92,8 @@ class ParticipantForm(forms.ModelForm):
         genemutations = set()
         i = 0
         field_name = 'genemutation_%s' % (i,)
-        while self.cleaned_data.get(field_name):
-            genemutation = self.cleaned_data[field_name]
+        while self.data.get(field_name):
+            genemutation = self.data[field_name]
             if genemutation in genemutations:
                 self.add_error(field_name, 'Duplicate')
             else:

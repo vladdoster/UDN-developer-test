@@ -10,7 +10,7 @@ ADMINS = (
 MANAGERS = ADMINS
 
 INSTALLED_APPS += ["debug_toolbar",
-                   "django_extensions"
+                   "django_extensions",
                    "crispy_forms", ]
 
 # Crispy forms
