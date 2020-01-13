@@ -78,7 +78,7 @@ I used a mix of vanilla JS, Jquery, and Bootstrap V4. It could look better, but 
 know that you all probably have an idea of what you want it to look like.
 
 #### Known TODOs / Bugs
-I need to write the JS to be able to add another input so that environmental exposures and genetic mods. get their own record for 
+- [x] I need to write the JS to be able to add another input so that environmental exposures and genetic mods. get their own record for 
 each issue. I just didnt want to cheap out and write a comma separator function and my solution is more elegant on the backend where
 I wouldn't want to be validating data coming in and trying to make sure the delimiter was correct or other random checks. There is one bug where
 the text areas arent rendering on the updateParticipantDataView and I couldn't locate it immediately. I will figure it out sometime on 
