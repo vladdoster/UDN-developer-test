@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load admin_urls %}
 
 {% block content %}
     <h2>Participants</h2>
@@ -44,7 +45,7 @@
                     {{ model.app_status_verbose }}
                 </td>
                 <td>
-                    <a href="{% url 'collector:update_participant' model.pk %}">
+                    <a href="/admin/collector/participant/{{ model.pk }}">
                         <button style="margin:auto; display:block; horiz-align: center" type="button"
                                 class="btn btn-success btn-sm"><span
                                 class="fas fa-edit center"></span> edit data
