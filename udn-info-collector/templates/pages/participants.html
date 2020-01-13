@@ -28,12 +28,16 @@
                 <td>{{ model.has_siblings }}</td>
                 <td>
                     {% for item in model.participantenvironmentalexposure_set.all %}
-                        {{ item.envexposure }}
+                        <ul>
+                            <li>{{ item.envexposure }}</li>
+                        </ul>
                     {% endfor %}
                 </td>
                 <td>
                     {% for item in model.participantgenemutation_set.all %}
-                        {{ item.genemutation }}
+                        <ul>
+                            <li>{{ item.genemutation }}</li>
+                        </ul>
                     {% endfor %}
                 </td>
                 <td>

@@ -1,8 +1,11 @@
+# import the logging library
+import logging
+
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit, Field, HTML, Div
 from django import forms
 
 from . import models
-# import the logging library
-import logging
 
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
@@ -12,6 +15,7 @@ class ParticipantForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+
         envexposures = models.ParticipantEnvironmentalExposure.objects.filter(
             participant=self.instance
         )
@@ -38,17 +42,48 @@ class ParticipantForm(forms.ModelForm):
                 self.initial[field_name] = ''
         #################################################
 
+        self.helper = FormHelper()
+        self.helper.layout = Layout(
+            Fieldset(
+                '',
+                Field('name', ),
+                Field('age', ),
+                'has_siblings',
+                'application_status',
+                HTML("""<h3>Environmental Exposures</h3>"""),
+                HTML("""<button onclick="newInput('envexposure')" style="margin-bottom: 5px;" type="button"
+                                  class="btn btn-success btn-sm"><span class="fas fa-plus pull-left"></span> Add environment exposure
+                          </button>"""),
+                Div(Field('envexposure_0', rows=2, cols=2, placeholder="Participant environmental exposure...",
+                          css_class="envexposure_textarea"),
+                    css_class="envexposure", ),
+                HTML("""<h3>Genetic Modifications</h3>"""),
+                HTML("""<button onclick="newInput('genemutation')" style="margin-bottom: 5px;" type="button"
+                                                  class="btn btn-success btn-sm"><span class="fas fa-plus pull-left"></span> Add genetic modification
+                                          </button>"""),
+                Div(Field('genemutation_0', rows=2, cols=2, placeholder="Participant gene mutation...",
+                          css_class="genemutation_textarea"),
+                    css_class="genemutation", ),
+            ),
+            ButtonHolder(
+                Submit('submit', 'Submit participant data')
+            )
+        )
+
     def clean(self):
         # This can be reduced, i am doing a POC. Very easy to yank in vim and replace all
         #################################################
         envexposures = set()
         i = 0
         field_name = 'envexposure_%s' % (i,)
-        while self.cleaned_data.get(field_name):
-            envexposure = self.cleaned_data[field_name]
+        logger.debug(self.data)
+        while self.data.get(field_name):
+            envexposure = self.data[field_name]
             if envexposure in envexposures:
+                logger.debug("Duplicate!!")
                 self.add_error(field_name, 'Duplicate')
             else:
+                logger.debug("Not!!")
                 envexposures.add(envexposure)
             i += 1
             field_name = 'envexposure_%s' % (i,)
@@ -57,8 +92,8 @@ class ParticipantForm(forms.ModelForm):
         genemutations = set()
         i = 0
         field_name = 'genemutation_%s' % (i,)
-        while self.cleaned_data.get(field_name):
-            genemutation = self.cleaned_data[field_name]
+        while self.data.get(field_name):
+            genemutation = self.data[field_name]
             if genemutation in genemutations:
                 self.add_error(field_name, 'Duplicate')
             else:

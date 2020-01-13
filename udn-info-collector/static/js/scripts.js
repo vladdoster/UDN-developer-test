@@ -21,34 +21,19 @@ function simpleSearch() {
 }
 
 function newInput(inputType) {
-    var lastInput = $("input[id*=" + inputType + "]").slice(-1)[0];
-    console.log($("input[id*=" + inputType + "]").slice(-1)[0]);
-    console.log($(lastInput).id);
-    if ($(lastInput).val() === '') {
-        console.log("Empty" + $(lastInput).val())
-    } else {
-        console.log("not empty!" + $(lastInput).val())
-    }
+    console.log("Adding a " + inputType);
+    var $new_element = $("." + inputType + "").children().last().clone();
+    var arrVars = $new_element.prop("id").split("_");
+    var lastVar = arrVars.pop();
+    lastVar++;
+    // Set new id and append to html
+    $new_element.prop("id", "div_id_" + inputType + "_" + lastVar);
+    $new_element.appendTo($("." + inputType + ""))
+    // Label for input
+    $label = $($new_element.contents()[1]);
+    $label.text(lastVar);
+    $label.attr('for', "id_" + inputType + "_" + lastVar);
+    // Text area for input
+    $text_area = $("." + inputType + "_textarea").last();
+    $text_area.attr("name", inputType + "_" + lastVar).attr("id", "id_" + inputType + "_" + lastVar).val("");
 }
-
-
-// $('.environmental-list-new').on('input', function () {
-//     var $this = $(this);
-//     var $clone = $this.clone();
-//     console.log($($clone))
-//     var name = $clone.attr("name");
-//     console.log($("input[name*='envexposure']"))
-//     var lastEnvExposure = $("input[name^='envexposure']").slice(-1)[0];
-//     console.log($(lastEnvExposure).attr('name').split("_")[1]);
-//
-//     let n = parseInt($(lastEnvExposure).attr('name').split("_")[1]) + 1;
-//     name = 'envexposure_' + n;
-//     console.log("new input name is " + name);
-//     $clone.val('').end();
-//     $clone.attr('name', name);
-//     $clone.appendTo($this.parent());
-//     $clone.val('')
-//     $this.removeClass('environmental-list-new');
-//     $this.off('input', arguments.callee);
-//     $clone.on('input', arguments.callee)
-// });

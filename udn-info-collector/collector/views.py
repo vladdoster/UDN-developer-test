@@ -1,6 +1,12 @@
+import logging
+
 from django.urls import reverse_lazy
 from django.views.generic import FormView, ListView, UpdateView
+
 from . import forms, models
+
+# Get an instance of a logger
+logger = logging.getLogger(__name__)
 
 
 class NewParticipantView(FormView):
@@ -24,8 +30,13 @@ class ParticipantListView(ListView):
 
 class ParticipantUpdateView(UpdateView):
     model = models.Participant
-    fields = '__all__'
-    # it should just use the suffix, but POC > elegant
-    # template_name_suffix = '_update_form'
     template_name = 'pages/participant_update_form.html'
+    form_class = forms.ParticipantForm
 
+    def form_valid(self, form):
+        form.clean()
+        form.save()
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return '/participants/'

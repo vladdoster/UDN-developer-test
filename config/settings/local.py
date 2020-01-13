@@ -9,10 +9,18 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+INSTALLED_APPS += ["debug_toolbar",
+                   "django_extensions",
+                   "crispy_forms", ]
+
+# Crispy forms
+# ------------------------------------------------------------------------------
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+CRISPY_FAIL_SILENTLY = not DEBUG
+
 # django-debug-toolbar
 # ------------------------------------------------------------------------------
-INSTALLED_APPS += ["debug_toolbar"]
-MIDDLEWARE += ["debug_toolbar.middleware.DebugToolbarMiddleware"]  # noqa F405
+MIDDLEWARE += ["debug_toolbar.middleware.DebugToolbarMiddleware"]
 DEBUG_TOOLBAR_CONFIG = {
     "DISABLE_PANELS": ["debug_toolbar.panels.redirects.RedirectsPanel"],
     "SHOW_TEMPLATE_CONTEXT": True,
@@ -23,5 +31,3 @@ if env("USE_DOCKER") == "yes":
 
     hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
     INTERNAL_IPS += [ip[:-1] + "1" for ip in ips]
-
-INSTALLED_APPS += ["django_extensions"]

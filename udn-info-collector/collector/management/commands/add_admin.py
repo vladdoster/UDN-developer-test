@@ -1,7 +1,6 @@
-from django.db import IntegrityError
 from django.contrib.auth.models import User
-
 from django.core.management.base import BaseCommand
+from django.db import IntegrityError
 
 
 class Command(BaseCommand):
