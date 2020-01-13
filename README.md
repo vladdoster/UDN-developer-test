@@ -20,6 +20,10 @@ Completed in ~6 hours
 
 ![](https://github.com/vladdoster/UDN-developer-test/blob/master/docs/assets/update_user.png)
 
+### Admin panel
+
+![](https://github.com/vladdoster/UDN-developer-test/blob/master/docs/assets/admin.png)
+
 </div>
 
 # To run
