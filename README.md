@@ -2,23 +2,27 @@
 
 # Simple user data ingestions app with DB viewer/updater for UDN
 
+Completed in ~6 hours
+
 ### Screenshots
 
 ### DB view
 
-https://github.com/vladdoster/UDN-developer-test/blob/vlad-test-attempt/docs/assets/no_data.png
+![](https://github.com/vladdoster/UDN-developer-test/blob/master/docs/assets/different_users.png)
 
-https://github.com/vladdoster/UDN-developer-test/blob/vlad-test-attempt/docs/assets/different_users.png
-
-https://github.com/vladdoster/UDN-developer-test/blob/vlad-test-attempt/docs/assets/search.png
+![](https://github.com/vladdoster/UDN-developer-test/blob/master/docs/assets/search.png)
 
 ### Adding new user
 
-https://github.com/vladdoster/UDN-developer-test/blob/vlad-test-attempt/docs/assets/new_user.png
+![](https://github.com/vladdoster/UDN-developer-test/blob/master/docs/assets/new_user.png)
 
 ### Updating existing user
 
-https://github.com/vladdoster/UDN-developer-test/blob/vlad-test-attempt/docs/assets/update_user.png
+![](https://github.com/vladdoster/UDN-developer-test/blob/master/docs/assets/update_user.png)
+
+### Admin panel
+
+![](https://github.com/vladdoster/UDN-developer-test/blob/master/docs/assets/admin.png)
 
 </div>
 
